@@ -1,3 +1,35 @@
 * {
   box-sizing: border-box;
 }
+
+html,
+body {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 550px;
+  font-family: 'Inter', sans-serif;
+}
+
+@font-face {
+  font-family: 'impact';
+  src: url(impact.ttf);
+}
+
+.header-container,
+.header-container-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #fff;
+}
+
+.header-container {
+  background: linear-gradient(90deg, #672280, #a626d3);
+  height: 100px;
+  padding: 1.5em;
+  justify-content: space-between;
+}
+
+.header-container-title {
+  gap: 0.7em;
+}
