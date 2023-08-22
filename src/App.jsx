@@ -3,31 +3,22 @@ import Meme from './components/Meme.jsx';
 import { useState } from 'react';
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [isGoingOut, setIsGoingOut] = useState(true);
 
-  const minusOne = () => {
-    if (count < 1) {
-      return;
-    }
-    setCount(count - 1);
-  };
-
-  const plusOne = () => {
-    setCount(count + 1);
-  };
+  // const handleClick = () => {
+  //   setIsGoingOut(!isGoingOut);
+  // };
 
   return (
     <>
-      <div className="counter">
-        <button onClick={minusOne} className="counter--minus">
-          -
-        </button>
-        <div className="counter--count">
-          <h1>{count}</h1>
+      <div className="state">
+        <h1 className="state--title">Do I feel like going out tonight?</h1>
+        <div
+          onClick={() => setIsGoingOut(!isGoingOut)}
+          className="state--value"
+        >
+          <h1> {isGoingOut ? 'YES' : 'NO'} </h1>
         </div>
-        <button onClick={plusOne} className="counter--plus">
-          +
-        </button>
       </div>
 
       {/* <Header /> */}
