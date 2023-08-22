@@ -1,30 +1,49 @@
 import Header from './components/Header.jsx';
 import Meme from './components/Meme.jsx';
 import { useState } from 'react';
+import user from './assets/user.png';
+import starFilled from './assets/star-filled.png';
+import starEmpty from './assets/star-empty.png';
 
 const App = () => {
-  const [isGoingOut, setIsGoingOut] = useState(true);
+  const [contact, setContact] = useState({
+    firstName: 'John',
+    lastName: 'Doe',
+    phone: '+1 (719) 555-1212 ',
+    email: 'itsmyrealname@example.com',
+    isFavorite: false,
+  });
 
-  // const handleClick = () => {
-  //   setIsGoingOut(!isGoingOut);
-  // };
+  const toggleFavorite = () => {
+    console.log('toggle Favorite');
+  };
 
   return (
-    <>
-      <div className="state">
-        <h1 className="state--title">Do I feel like going out tonight?</h1>
-        <div
-          onClick={() => setIsGoingOut(!isGoingOut)}
-          className="state--value"
-        >
-          <h1> {isGoingOut ? 'YES' : 'NO'} </h1>
+    <main>
+      <article className="card">
+        <img className="card--image" src={user} alt="Photo de profil" />
+        <div className="card--info">
+          <img
+            src={contact.isFavorite ? starFilled : starEmpty}
+            alt="User"
+            className="card--favorite"
+            onClick={toggleFavorite}
+          />
+          <h2 className="card--name">
+            {contact.firstName} {contact.lastName}{' '}
+          </h2>
+          <p className="card--contact"> {contact.phone} </p>
+          <p className="card--contact"> {contact.email} </p>
         </div>
-      </div>
-
-      {/* <Header /> */}
-      {/* <Meme /> */}
-    </>
+      </article>
+    </main>
   );
 };
 
 export default App;
+{
+  /* <Header /> */
+}
+{
+  /* <Meme /> */
+}
