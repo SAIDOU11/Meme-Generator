@@ -5,17 +5,17 @@ const Meme = () => {
   const [meme, setMeme] = useState({
     topText: '',
     bottomText: '',
-    randomImage: 'https://i.imgflip.com/30b1gx.jpg',
+    randomImage: 'https://i.imgflip.com/1ur9b0.jpg',
   });
 
-  const [allMemeImages, setAllMemeImage] = useState(memesData);
+  const [allMemesImages, setAllMemesImages] = useState(memesData);
 
-  const getRandomMeme = () => {
-    const memesArray = allMemeImages.data.memes;
-    const oneMeme = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[oneMeme].url;
-    setMeme((previousMeme) => {
-      return { ...previousMeme, randomImage: url };
+  const getRandomImage = () => {
+    const memesArray = memesData.data.memes;
+    const randomNumber = Math.floor(Math.random() * memesArray.length);
+    const url = memesArray[randomNumber].url;
+    setMeme((previousState) => {
+      return { ...previousState, randomImage: url };
     });
   };
 
@@ -31,8 +31,8 @@ const Meme = () => {
           />
         </div>
         <div className="btn-container">
-          <button onClick={getRandomMeme} className="btn">
-            Get a new meme image 🖼️{' '}
+          <button onClick={getRandomImage} className="btn">
+            Get a new meme image 🖼️
           </button>
         </div>
         <img className="meme-img" src={meme.randomImage} />
