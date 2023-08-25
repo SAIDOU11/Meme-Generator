@@ -8,9 +8,19 @@ const Meme = () => {
     randomImage: 'https://i.imgflip.com/1ur9b0.jpg',
   });
 
+  console.log(meme.bottomText);
+
   const [allMemesImages, setAllMemesImages] = useState(memesData);
 
-  const getRandomImage = () => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setMeme((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  };
+
+  const getRandomImage = (event) => {
+    event.preventDefault();
     const memesArray = memesData.data.memes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
     const url = memesArray[randomNumber].url;
@@ -23,11 +33,21 @@ const Meme = () => {
     <main>
       <div className="meme-container">
         <div className="input-text">
-          <input className="top-text" placeholder="Shut up" type="text" />{' '}
           <input
+            onChange={handleChange}
+            className="top-text"
+            placeholder="Shut up"
+            type="text"
+            name="topText"
+            value={meme.topText}
+          />{' '}
+          <input
+            onChange={handleChange}
             className="bottom-text"
             placeholder="and take my money"
             type="text"
+            name="bottomText"
+            value={meme.bottomText}
           />
         </div>
         <div className="btn-container">
@@ -35,7 +55,11 @@ const Meme = () => {
             Get a new meme image 🖼️
           </button>
         </div>
-        <img className="meme-img" src={meme.randomImage} />
+        <div className="meme">
+          <img className="meme-img" src={meme.randomImage} />
+          <h2 className="meme--text top">{meme.topText}</h2>
+          <h2 className="meme--text bottom">{meme.bottomText} </h2>
+        </div>
       </div>
     </main>
   );
